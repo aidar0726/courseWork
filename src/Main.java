@@ -1,32 +1,38 @@
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        java.util.Random random = new java.util.Random();
-
-        String arrayFirstLastNames[] = new String[10];
         Employee employeeDataArray[] = new Employee[10];
 
-        arrayFirstLastNames[0] = "Иванов Иван Петрович";
-        arrayFirstLastNames[1] = "Галкин Василий Иванович";
-        arrayFirstLastNames[2] = "Ветров Генадий Семенович";
-        arrayFirstLastNames[3] = "Руденко Павел Гарикович";
-        arrayFirstLastNames[4] = "Шипотько Григорий Владимирович";
-        arrayFirstLastNames[5] = "Газманов Олег Петрович";
-        arrayFirstLastNames[6] = "Петросян Яков Юрьевич";
-        arrayFirstLastNames[7] = "Шугай Леонид Якубович";
-        arrayFirstLastNames[8] = "Валуев Николай Джонович";
-        arrayFirstLastNames[9] = "Казаков Юрий Степанович";
+        employeeDataArray = new Employee[] {
+                new Employee( "Джон Траволта",120_000,3),
+                new Employee( "Брэд Питт",80_000,5),
+                new Employee( "Курт Рассел",95_000,2),
+                new Employee( "Мила Йовович",75_000,1),
+                new Employee( "Эдвард Нортон",60_000,4),
+                new Employee( "Джерард Батлер",140_000,2),
+                new Employee( "Джесика Честейн",90_000,3),
+                new Employee( "Деми Мур",130_000,4),
+                new Employee( "Дэнзел Вашингтон",110_000,3),
+                new Employee( "Рассел Кроу",70_000,2),
+        };
 
-        /* или лучше не циклом а прописать метод создания в массива в классе ? сделать метод который возвращает массив ?*/
-        for (int i = 0; i < arrayFirstLastNames.length; i++) {
-            employeeDataArray[i] = new Employee(arrayFirstLastNames[i], random.nextInt(120_000), random.nextInt(6) + 1);
-        }
+        EmployeeСlassMethods.printsEmployeeInformation(employeeDataArray);
+        System.out.println("Общая сумма потраченная на зарплаты сотрудников - " + EmployeeСlassMethods.printSumEmployeeSalary(employeeDataArray) + " руб.");
+        System.out.println("Среднее значение зарплат сотрудников - " + EmployeeСlassMethods.printsAvgEmployeeSalary(employeeDataArray) + " руб.");
+        System.out.println("Максимальная заробатная плата составляет - " + EmployeeСlassMethods.findMaxEmployeeSalary(employeeDataArray) + " руб.");
+        System.out.println("Минимальная заробатная плата составляет - " + EmployeeСlassMethods.findMinEmployeeSalary(employeeDataArray) + " руб.");
+        EmployeeСlassMethods.showsLastNameEmployee(employeeDataArray);
 
-        Employee.printsEmployeeInformation(employeeDataArray);
-        System.out.println("Общая сумма потраченная на зарплаты сотрудников - " + Employee.printSumEmployeeSalary(employeeDataArray) + " руб.");
-        System.out.println("Среднее значение зарплат сотрудников - " + Employee.printsAvgEmployeeSalary(employeeDataArray) + " руб.");
-        System.out.println("Максимальная заробатная плата составляет - " + Employee.findMaxEmployeeSalary(employeeDataArray) + " руб.");
-        Employee.showsLastNameEmployee(employeeDataArray);
+        /*вывод результата методов повышенной сложности*/
+
+        System.out.println("Общая сумма зароботной платы по 3-му отделу составляет - " + EmployeeСlassMethods.printMaxSumSalaryDepartment(employeeDataArray,3) + " руб.");
+        System.out.println("Максимальная зароботная плата по 3-му отделу составляет - " + EmployeeСlassMethods.findMaxDepartmentSalary(employeeDataArray,3) + " руб.");
+        System.out.println("Средняя зароботная плата по 3-му отделу составляет - " + EmployeeСlassMethods.printAvgSalaryDepartment(employeeDataArray,3) + " руб.");
+        EmployeeСlassMethods.printInfoEmployeeDepartment(employeeDataArray,2);
+        EmployeeСlassMethods.printPercentSalary(employeeDataArray,7);
+        EmployeeСlassMethods.printLessNumberSalary(employeeDataArray,100_000);
+        EmployeeСlassMethods.printMoreNumberSalary(employeeDataArray,100_000);
+        EmployeeСlassMethods.printPercentDepartmentSalary(employeeDataArray,3, 12);
+
     }
 }
